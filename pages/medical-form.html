@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../media/logo-icon.ico">
+    <title>Formulaire - Générateur PDF Médical</title>
+    <link rel="stylesheet" href="../styles/form-styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="medical-form">
+        <h1>Fiche Suivi Santé Patient</h1>
+        <p>Remplissez le formulaire ci-dessous pour obtenir votre fiche de suivi médical à remettre au professionel de santé.</p>
+        <br>
+        <form onsubmit="submitMedicalForm(event)">
+            <p>Prénom<span>*</span></p>
+            <input type="text" id="first-name" placeholder="..." required>
+            <p>Nom<span>*</span></p>
+            <input type="text" id="last-name" placeholder="..." required>
+            <p>Sexe<span>*</span></p>
+            <select id="sex" required>
+                <option value="N/A">Non spécifié</option>
+                <option value="Masculin">Masculin</option>
+                <option value="Féminin">Féminin</option>
+            </select>
+            <p>Photo d'identité<span>*</span></p>
+            <input type="file" id="photo" accept=".png,.jpg,.jpeg,.pdf,.gif,.svg,.webp" required>
+            <p>Date de naissance<span>*</span></p>
+            <input type="date" id="age" placeholder="..." required>
+            <p>Poids (kg)<span>*</span></p>
+            <input type="number" id="weight" placeholder="..." required>
+            <p>Taille (cm)<span>*</span></p>
+            <input type="number" id="height" placeholder="..." required>
+            <p>Groupe sanguin</p>
+            <select id="blood-group">
+                <option value="N/A">Non spécifié</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <p>Code postal<span>*</span></p>
+            <input type="number" id="postal-code" placeholder="..." required>
+            <p>Ville<span>*</span></p>
+            <input type="text" id="city" placeholder="..." required>
+            <p>Ligne d'adresse 1<span>*</span></p>
+            <input type="text" id="address" placeholder="..." required>
+            <p>Numéro de téléphone<span>*</span></p>
+            <input type="tel" id="phone" placeholder="..." required>
+            <p>Nom d'un contact d'urgence<span>*</span></p>
+            <input type="text" id="emergency-contact" placeholder="..." required>
+            <p>Numéro de téléphone du contact d'urgence<span>*</span></p>
+            <input type="tel" id="emergency-phone" placeholder="..." required>
+            <p>Dernière consultation médicale<span>*</span></p>
+            <input type="date" id="last-consultation" placeholder="...">
+            <p>Nom du médecin traitant</p>
+            <input type="text" id="doctor" placeholder="...">
+            <p>Symptômes récents</p>
+            <textarea id="symptoms" placeholder="Maux de tête, courbatures, fatigue inhabituelle, etc..."></textarea>
+            <p>Antécédents médicaux</p>
+            <textarea id="history" placeholder="Asthme, allergies, hyperthyroïdie, etc..."></textarea>
+            <p>Traitements en cours</p>
+            <textarea id="treatment" placeholder="Paracétamol, ibuprofène, amoxicilline, etc..."></textarea>
+            <p>Notes supplémentaires</p>
+            <textarea id="notes" placeholder="Indications utiles pour le professionel de santé"></textarea>
+            <button type="submit">Télécharger ma fiche </button>
+        </form>
+    </div>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+/* Style global */
+body {
+    margin: 0;
+    background-color: #f4f8ff;
+    color: #003366;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteneur principal */
+.medical-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    text-align: center;
+}
+
+/* Titre */
+.medical-form h1 {
+    font-size: 24px;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+.medical-form p {
+    margin: 10px;
+    text-align: left;
+}
+
+.medical-form p span {
+    color: red;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Champs de texte */
+input, textarea {
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #6c757d;
+}
+
+/* Bouton */
+button {
+    padding: 10px;
+    font-size: 18px;
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 70%;
+}
+
+button {
+    display: block; /* Permet à margin auto de fonctionner */
+    margin: 10px auto; /* Centre horizontalement */
+}
+
+
+button:hover {
+    background-color: #0055b3;
+}
+
