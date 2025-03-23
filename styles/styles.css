@@ -8,12 +8,13 @@ body {
 #icons {
     max-width: 25%;
     position: absolute;
-    right: 50px;
+    right: 75px;
+    top: 55px;
 }
 
 /* Conteneur principal */
 .container {
-    margin-top: 70px;
+    margin-top: 80px;
     padding: 100px;
     max-width: 600px;
 }
@@ -70,6 +71,21 @@ body {
     color: #303030;
     border: 1px solid #303030;
 }
+
+
+.links {
+    z-index: 1000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #003366;
+}
+
 
 @media (max-width: 500px) {
     #icons {
