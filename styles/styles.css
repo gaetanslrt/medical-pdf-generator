@@ -14,7 +14,8 @@ body {
 
 /* Conteneur principal */
 .container {
-    margin-top: 80px;
+    margin-top: 20vh;
+    margin-left: 5vw;
     padding: 100px;
     max-width: 600px;
 }
