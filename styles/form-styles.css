@@ -53,6 +53,7 @@ select {
 
 /* Champs de texte */
 input, textarea {
+    font-family: Arial, sans-serif;
     width: 97%;
     padding: 10px;
     border: 1px solid #b0c4de;
