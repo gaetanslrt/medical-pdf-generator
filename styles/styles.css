@@ -94,6 +94,8 @@ a {
     }
     
     .container {
+	    margin-top: 10vh !important;
+	    margin-left: 0vw !important;
         padding: 30px !important;
     }
 }
