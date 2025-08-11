@@ -1,28 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="media/logo.png">
-    <title>Générateur PDF Médical - générez votre fiche de suivi médicale en un instant</title>
+    <title>MediTrack Pro - Générateur PDF Médical Premium</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/21620294db.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <img id="icons" src="media/media-icons.png">
-    <div class="container">
-        <h1>Générez votre fiche de suivi médical</h1>
-        <p>Obtenez vos informations personnelles médicales rapidement et téléchargez votre fiche de suivi médical utile pour votre médecin.</p>
-        <br>
-        <button id="start" onclick="window.location.href='pages/medical-form.html'">Commencer</button>
-        <button id="example" onclick="window.location.href='documents/suivi_medical_exemple.pdf'">Voir un exemple</button>
-    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>MediTrack Pro</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Fonctionnalités</a>
+                <a href="#about">À propos</a>
+                <a href="pages/medical-form.html" class="cta-button">Commencer</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="links">
-        <a href="https://x.com/gaetanslrt "><i class="fa-brands fa-x-twitter"></i></a>
-        &nbsp;
-        <a href="https://github.com/gaetanslrt/medical-pdf-generator"><i class="fa-brands fa-github"></i></a>
-    </div>
-    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Générez votre <span class="highlight">fiche de suivi médical</span> en quelques clics
+                </h1>
+                <p class="hero-description">
+                    Solution professionnelle pour créer des fiches médicales complètes et personnalisées. 
+                    Optimisez votre suivi santé avec notre générateur PDF intelligent.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="window.location.href='pages/medical-form.html'">
+                        <i class="fas fa-play"></i>
+                        Commencer maintenant
+                    </button>
+                    <button class="btn-secondary" onclick="window.location.href='documents/suivi_medical_exemple.pdf'">
+                        <i class="fas fa-eye"></i>
+                        Voir un exemple
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <i class="fas fa-file-medical"></i>
+                    <h3>Fiche Médicale</h3>
+                    <p>Format professionnel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Pourquoi choisir MediTrack Pro ?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Génération rapide</h3>
+                    <p>Créez votre fiche médicale en moins de 2 minutes avec notre formulaire intuitif.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Confidentialité garantie</h3>
+                    <p>Vos données restent privées. Aucune information n'est stockée sur nos serveurs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Compatible mobile</h3>
+                    <p>Interface responsive qui s'adapte parfaitement à tous vos appareils.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Téléchargement instantané</h3>
+                    <p>Recevez votre PDF immédiatement après validation du formulaire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>À propos de MediTrack Pro</h2>
+                    <p>
+                        Développé pour simplifier le suivi médical, MediTrack Pro permet aux patients 
+                        de créer des fiches de suivi complètes et professionnelles. Notre solution 
+                        facilite la communication avec les professionnels de santé.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Gratuit</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Disponible</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">PDF</span>
+                            <span class="stat-label">Professionnel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MediTrack Pro</h3>
+                    <p>Solution moderne pour le suivi médical</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens utiles</h4>
+                    <a href="pages/medical-form.html">Créer une fiche</a>
+                    <a href="documents/suivi_medical_exemple.pdf">Voir un exemple</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://x.com/gaetanslrt" aria-label="Twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://github.com/gaetanslrt/medical-pdf-generator" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MediTrack Pro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

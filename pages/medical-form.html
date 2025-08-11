@@ -1,76 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../media/logo.png">
-    <title>Formulaire - Générateur PDF Médical</title>
+    <title>Créer votre fiche médicale - MediTrack Pro</title>
     <link rel="stylesheet" href="../styles/form-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://kit.fontawesome.com/21620294db.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="medical-form">
-        <h1>Fiche Suivi Santé Patient</h1>
-        <p>Remplissez le formulaire ci-dessous pour obtenir votre fiche de suivi médical à remettre au professionel de santé.</p>
-        <br>
-        <form onsubmit="submitMedicalForm(event)">
-            <p>Prénom<span>*</span></p>
-            <input type="text" id="first-name" placeholder="..." required>
-            <p>Nom<span>*</span></p>
-            <input type="text" id="last-name" placeholder="..." required>
-            <p>Sexe<span>*</span></p>
-            <select id="sex" required>
-                <option value="N/A">Non spécifié</option>
-                <option value="Masculin">Masculin</option>
-                <option value="Féminin">Féminin</option>
-            </select>
-            <p>Photo d'identité<span>*</span></p>
-            <input type="file" id="photo" accept=".png,.jpg,.jpeg,.pdf,.gif,.svg,.webp" required>
-            <p>Date de naissance<span>*</span></p>
-            <input type="date" id="age" placeholder="..." required>
-            <p>Poids (kg)<span>*</span></p>
-            <input type="number" id="weight" placeholder="..." required>
-            <p>Taille (cm)<span>*</span></p>
-            <input type="number" id="height" placeholder="..." required>
-            <p>Groupe sanguin</p>
-            <select id="blood-group">
-                <option value="N/A">Non spécifié</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-            </select>
-            <p>Code postal<span>*</span></p>
-            <input type="number" id="postal-code" placeholder="..." required>
-            <p>Ville<span>*</span></p>
-            <input type="text" id="city" placeholder="..." required>
-            <p>Ligne d'adresse 1<span>*</span></p>
-            <input type="text" id="address" placeholder="..." required>
-            <p>Numéro de téléphone<span>*</span></p>
-            <input type="tel" id="phone" placeholder="..." required>
-            <p>Nom d'un contact d'urgence<span>*</span></p>
-            <input type="text" id="emergency-contact" placeholder="..." required>
-            <p>Numéro de téléphone du contact d'urgence<span>*</span></p>
-            <input type="tel" id="emergency-phone" placeholder="..." required>
-            <p>Dernière consultation médicale<span>*</span></p>
-            <input type="date" id="last-consultation" placeholder="...">
-            <p>Nom du médecin traitant</p>
-            <input type="text" id="doctor" placeholder="...">
-            <p>Symptômes récents</p>
-            <textarea id="symptoms" placeholder="Maux de tête, courbatures, fatigue inhabituelle, etc..."></textarea>
-            <p>Antécédents médicaux</p>
-            <textarea id="history" placeholder="Asthme, allergies, hyperthyroïdie, etc..."></textarea>
-            <p>Traitements en cours</p>
-            <textarea id="treatment" placeholder="Paracétamol, ibuprofène, amoxicilline, etc..."></textarea>
-            <p>Notes supplémentaires</p>
-            <textarea id="notes" placeholder="Indications utiles pour le professionel de santé"></textarea>
-            <button type="submit">Télécharger ma fiche </button>
-        </form>
-    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>MediTrack Pro</span>
+                </a>
+            </div>
+            <div class="nav-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text">Étape <span id="currentStep">1</span> sur <span id="totalSteps">4</span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="form-header">
+        <div class="container">
+            <h1><i class="fas fa-user-md"></i> Fiche de Suivi Médical</h1>
+            <p>Remplissez le formulaire ci-dessous pour générer votre fiche médicale professionnelle</p>
+        </div>
+    </header>
+
+    <!-- Main Form -->
+    <main class="form-main">
+        <div class="container">
+            <form id="medicalForm" onsubmit="submitMedicalForm(event)">
+                <!-- Step 1: Informations personnelles -->
+                <div class="form-step active" id="step1">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-info">
+                            <h2>Informations personnelles</h2>
+                            <p>Vos données d'identité et coordonnées</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="first-name">
+                                <i class="fas fa-user"></i>
+                                Prénom <span class="required">*</span>
+                            </label>
+                            <input type="text" id="first-name" placeholder="Votre prénom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last-name">
+                                <i class="fas fa-user"></i>
+                                Nom <span class="required">*</span>
+                            </label>
+                            <input type="text" id="last-name" placeholder="Votre nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sex">
+                                <i class="fas fa-venus-mars"></i>
+                                Sexe <span class="required">*</span>
+                            </label>
+                            <select id="sex" required>
+                                <option value="">Sélectionnez votre sexe</option>
+                                <option value="Masculin">Masculin</option>
+                                <option value="Féminin">Féminin</option>
+                                <option value="Non spécifié">Non spécifié</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age">
+                                <i class="fas fa-calendar"></i>
+                                Date de naissance <span class="required">*</span>
+                            </label>
+                            <input type="date" id="age" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="photo">
+                                <i class="fas fa-camera"></i>
+                                Photo d'identité <span class="required">*</span>
+                            </label>
+                            <div class="file-upload">
+                                <input type="file" id="photo" accept=".png,.jpg,.jpeg,.pdf,.gif,.svg,.webp" required>
+                                <label for="photo" class="file-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Choisir un fichier</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Mesures physiques -->
+                <div class="form-step" id="step2">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-info">
+                            <h2>Mesures physiques</h2>
+                            <p>Vos données anthropométriques</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="weight">
+                                <i class="fas fa-weight"></i>
+                                Poids (kg) <span class="required">*</span>
+                            </label>
+                            <input type="number" id="weight" placeholder="Ex: 70" min="20" max="300" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="height">
+                                <i class="fas fa-ruler-vertical"></i>
+                                Taille (cm) <span class="required">*</span>
+                            </label>
+                            <input type="number" id="height" placeholder="Ex: 175" min="100" max="250" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="blood-group">
+                                <i class="fas fa-tint"></i>
+                                Groupe sanguin
+                            </label>
+                            <select id="blood-group">
+                                <option value="">Sélectionnez votre groupe</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Coordonnées -->
+                <div class="form-step" id="step3">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-info">
+                            <h2>Coordonnées</h2>
+                            <p>Votre adresse et contacts</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="postal-code">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Code postal <span class="required">*</span>
+                            </label>
+                            <input type="text" id="postal-code" placeholder="Ex: 75001" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">
+                                <i class="fas fa-city"></i>
+                                Ville <span class="required">*</span>
+                            </label>
+                            <input type="text" id="city" placeholder="Votre ville" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="address">
+                                <i class="fas fa-home"></i>
+                                Adresse <span class="required">*</span>
+                            </label>
+                            <input type="text" id="address" placeholder="Numéro et nom de rue" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i>
+                                Téléphone <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="phone" placeholder="Ex: 06 12 34 56 78" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergency-contact">
+                                <i class="fas fa-user-shield"></i>
+                                Contact d'urgence <span class="required">*</span>
+                            </label>
+                            <input type="text" id="emergency-contact" placeholder="Nom du contact" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergency-phone">
+                                <i class="fas fa-phone-alt"></i>
+                                Téléphone d'urgence <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="emergency-phone" placeholder="Ex: 06 12 34 56 78" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Informations médicales -->
+                <div class="form-step" id="step4">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-info">
+                            <h2>Informations médicales</h2>
+                            <p>Votre historique et suivi médical</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="last-consultation">
+                                <i class="fas fa-calendar-check"></i>
+                                Dernière consultation
+                            </label>
+                            <input type="date" id="last-consultation">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="doctor">
+                                <i class="fas fa-user-md"></i>
+                                Médecin traitant
+                            </label>
+                            <input type="text" id="doctor" placeholder="Nom du médecin">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="symptoms">
+                                <i class="fas fa-thermometer-half"></i>
+                                Symptômes récents
+                            </label>
+                            <textarea id="symptoms" placeholder="Décrivez vos symptômes actuels (maux de tête, fatigue, etc.)" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="history">
+                                <i class="fas fa-history"></i>
+                                Antécédents médicaux
+                            </label>
+                            <textarea id="history" placeholder="Listez vos antécédents (asthme, allergies, etc.)" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="treatment">
+                                <i class="fas fa-pills"></i>
+                                Traitements en cours
+                            </label>
+                            <textarea id="treatment" placeholder="Médicaments actuels et posologie" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="notes">
+                                <i class="fas fa-sticky-note"></i>
+                                Notes supplémentaires
+                            </label>
+                            <textarea id="notes" placeholder="Informations complémentaires pour le professionnel de santé" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="form-navigation">
+                    <button type="button" class="btn-secondary" id="prevBtn" onclick="previousStep()" style="display: none;">
+                        <i class="fas fa-arrow-left"></i>
+                        Précédent
+                    </button>
+                    <button type="button" class="btn-primary" id="nextBtn" onclick="nextStep()">
+                        Suivant
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="btn-success" id="submitBtn" style="display: none;">
+                        <i class="fas fa-download"></i>
+                        Générer ma fiche
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="form-footer">
+        <div class="container">
+            <p>&copy; 2024 MediTrack Pro. Vos données restent confidentielles.</p>
+        </div>
+    </footer>
+
     <script src="../scripts/script.js"></script>
 </body>
 </html>
